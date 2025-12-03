@@ -6,11 +6,6 @@
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.task-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-}
-
 .task-header {
   display: flex;
   justify-content: space-between;
@@ -77,12 +72,12 @@
 }
 
 .btn-edit {
-  background: #3498db;
+  background: #667eea;
   color: white;
 }
 
 .btn-edit:hover {
-  background: #2980b9;
+  background: #5568d3;
 }
 
 .btn-delete {

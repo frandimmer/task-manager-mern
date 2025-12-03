@@ -50,9 +50,6 @@ function CreateTask() {
       <div className="task-form-card">
         <div className="form-header">
           <h2>Nueva Tarea</h2>
-          <button onClick={() => navigate('/dashboard')} className="btn-back">
-            ← Volver
-          </button>
         </div>
 
         {error && <div className="error-message">{error}</div>}

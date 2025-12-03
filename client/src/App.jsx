@@ -1,8 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
-import Register from './pages/Register';
+import ProtectedRoute from './components/ProtectedRoute';
+import PublicRoute from './components/PublicRoute';
 import Login from './pages/Login';
+import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import CreateTask from './pages/CreateTask';
 import EditTask from './pages/EditTask';
@@ -12,12 +14,51 @@ function App() {
     <AuthProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/crear-tarea" element={<CreateTask />} />
-          <Route path="/editar-tarea/:id" element={<EditTask />} />
-          <Route path="/" element={<Navigate to="/login" />} />
+          <Route 
+            path="/login" 
+            element={
+              <PublicRoute>
+                <Login />
+              </PublicRoute>
+            } 
+          />
+          <Route 
+            path="/register" 
+            element={
+              <PublicRoute>
+                <Register />
+              </PublicRoute>
+            } 
+          />
+
+          <Route 
+            path="/dashboard" 
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/crear-tarea" 
+            element={
+              <ProtectedRoute>
+                <CreateTask />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/editar-tarea/:id" 
+            element={
+              <ProtectedRoute>
+                <EditTask />
+              </ProtectedRoute>
+            } 
+          />
+
+          <Route path="/" element={<Navigate to="/dashboard" />} />
+          
+          <Route path="*" element={<Navigate to="/dashboard" />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
