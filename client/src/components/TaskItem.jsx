@@ -21,9 +21,14 @@ function TaskItem({ task, onDelete, onEdit, onToggleStatus }) {
   };
 
   const formatDate = (date) => {
-    if (!date) return null;
-    return new Date(date).toLocaleDateString('es-AR');
-  };
+  if (!date) return null;
+  return new Date(date).toLocaleDateString('es-AR', { 
+    timeZone: 'UTC',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+  });
+};
 
   return (
     <div className="task-item">
